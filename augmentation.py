@@ -17,6 +17,7 @@ def random_translate(image, steering_angle, wrg, hrg):
     image = cv2.warpAffine(image, tm, (width, height))
     return image, steering_angle
 
+# reference: https://chatbotslife.com/using-augmentation-to-mimic-human-driving-496b569760a9
 def random_shadow(image):
     x1, y1 = cf.IMAGE_WIDTH * np.random.rand(), 0
     x2, y2 = cf.IMAGE_WIDTH * np.random.rand(), cf.IMAGE_HEIGHT
@@ -53,18 +54,6 @@ def random_shadow(image):
 #             image_hls[:,:,1][cond0] = image_hls[:,:,1][cond0] * random_bright
 #     image = cv2.cvtColor(image_hls,cv2.COLOR_HLS2RGB)
 #     return image
-
-# def random_brightness(image):
-#     hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
-#     ratio = 1.0 + 0.4 * (np.random.rand() - 0.5)
-#     hsv[:,:,2] =  hsv[:,:,2] * ratio
-#     return cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
-
-# def random_brightness(image):
-#     hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
-#     ratio = .25 + np.random.uniform()
-#     hsv[:,:,2] =  hsv[:,:,2] * ratio
-#     return cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
 
 def random_brightness(image):
     image1 = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
