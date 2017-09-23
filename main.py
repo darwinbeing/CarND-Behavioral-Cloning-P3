@@ -55,11 +55,11 @@ def main():
     np.random.seed(1234)
 
     df_train, df_valid = load_data(args.data_dir)
-    # if os.path.exists('model.h5'):
-    #     model = load_model('model.h5')
-    #     print('Previous model loaded!')
-    # else:
-    #     model = get_nvidia_model()
+    if os.path.exists('model.h5'):
+        model = load_model('model.h5')
+        print('Previous model loaded!')
+    else:
+        model = get_nvidia_model()
 
     model = get_nvidia_model()
     plot_model(model, to_file='model.png')

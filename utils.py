@@ -60,6 +60,9 @@ def load_data(data_dir):
             angles = df['steering'].values
         else:
             df = pd.read_csv(file, names=headers)
+            df_obj = df.select_dtypes(['object'])
+            df[df_obj.columns] = df_obj.apply(lambda x: x.str.strip())
+
         driving_log = pd.concat([driving_log, df])
 
     df = driving_log
